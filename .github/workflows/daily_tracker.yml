@@ -1,1 +1,31 @@
+name: Invio Quotazioni Giornaliere
 
+on:
+  schedule:
+    # 08:00 UTC sono le 09:00 o 10:00 in Italia (a seconda dell'ora legale)
+    - cron: '0 8 * * *' 
+  workflow_dispatch: # Questo abilita il tasto "Run workflow" per i test manuali
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del codice
+        uses: actions/checkout@v3
+
+      - name: Configurazione Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Installazione dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Esecuzione script tracker
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python tracker.py

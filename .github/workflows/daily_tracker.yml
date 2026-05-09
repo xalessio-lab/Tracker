@@ -11,16 +11,20 @@ jobs:
     steps:
       - name: Checkout del codice
         uses: actions/checkout@v3
+
       - name: Configurazione Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+
       - name: Installazione dipendenze
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Esecuzione script tracker
         env:
+          # Questa parte collega i segreti che hai creato allo script Python
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python tracker.py

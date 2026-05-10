@@ -2,8 +2,9 @@ name: Invio Quotazioni e Meteo
 
 on:
   schedule:
+    # Pianificato per le 08:00 UTC (le 10:00 in Italia)
     - cron: '0 8 * * *' 
-  workflow_dispatch:
+  workflow_dispatch: # Ti permette di fare i test manuali
 
 jobs:
   build:

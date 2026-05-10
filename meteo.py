@@ -2,10 +2,10 @@ import os
 import requests
 import telebot
 
-# Recupero variabili dai Secrets
-TOKEN = os.environ.get('8223933518:AAGQUdtMu3f-Ydn17l73_d8T7Cz9HGpvaXM')
-CHAT_ID = os.environ.get('38862263')
-WEATHER_KEY = os.environ.get('928253ef7fc98e6be269725c9f61b762')
+# Recupero variabili dai Secrets (Usa i NOMI delle chiavi, non i valori!)
+TOKEN = os.environ.get('TELEGRAM_TOKEN')
+CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
+WEATHER_KEY = os.environ.get('OPENWEATHER_API_KEY')
 CITTA = "Cagliari,IT"
 
 bot = telebot.TeleBot(TOKEN)

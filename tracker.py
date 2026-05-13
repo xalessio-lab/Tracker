@@ -49,7 +49,7 @@ def ottieni_report():
         "BRENT CRUDE": "BZ=F"
     }
     
-    prezzi_msg = ""
+prezzi_msg = ""
     for nome, t in tickers.items():
         dati = yf.Ticker(t).history(period="1d")
         if not dati.empty:

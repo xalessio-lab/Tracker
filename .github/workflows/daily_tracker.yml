@@ -2,12 +2,14 @@ name: Hourly Market & Weather Tracker
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Esecuzione ogni ora (al minuto 0)
-  workflow_dispatch:     # Pulsante per test manuale
+    - cron: '0 * * * *'   # esecuzione ogni ora
+
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-with: ubuntu-latest
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout del codice
         uses: actions/checkout@v4
